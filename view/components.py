@@ -32,7 +32,7 @@ class Table:
         self.table.bind("<ButtonRelease>", self.select)
         self.table.bind("<KeyRelease>", self.select)
         self.table.place(x=x, y=y)
-
+#salam
 
 class TextAndLabel:
     def __init__(self, master, text, x, y, distance=80):
