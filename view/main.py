@@ -148,12 +148,75 @@ def lesson_click():
     #new_window = Toplevel(win)
        #new_window.title("پنجره جدید")
        #label = Label(new_window, text="این پنجره جدید است!").pack()
+
 def select_click():
-    new_window = Toplevel(win)
-    new_window.title("پنجره جدید")
-    label = Label(new_window, text="این پنجره جدید است!").pack()
+    win_lesson = Toplevel(win)
+    win_lesson.title("choose lesson")
+    win_lesson.geometry("360x400")
 
+    def refresh_person_side():
+        date_time.variable.set("")
+        person_id.variable.set("")
+        lesson_id.variable.set("")
 
+        p_table.refresh_table(p_control.find_all()[1] if p_control.find_all()[0] else None)
+
+    def person_select(row):
+        date_time.variable.set(row[0])
+        person_id.variable.set(row[1])
+        lesson_id.variable.set(row[2])
+
+    def p_save_click():
+        status, message = p_control.save(
+            date_time.variable.get(),
+            person_id.variable.get(),
+            lesson_id.variable.get())
+
+        if status:
+            msg.showinfo("Save", message)
+            refresh_person_side()
+        else:
+            msg.showerror("Save Error", message)
+
+    def p_edit_click():
+        status, message = p_control.edit(
+            date_time.variable.get(),
+            person_id.variable.get(),
+            lesson_id.variable.get())
+
+        if status:
+            msg.showinfo("Edit", message)
+            refresh_person_side()
+        else:
+            msg.showerror("Edit Error", message)
+
+    def p_remove_click():
+        status, message = p_control.remove(l_id.variable.get())
+
+        if status:
+            msg.showinfo("Remove", message)
+            refresh_person_side()
+        else:
+            msg.showerror("Remove Error", message)
+
+    # Person
+    Label(win_lesson, text="Person Info", font=("Arial", 16)).place(x=20, y=10)
+    date_time = TextAndLabel(win_lesson, "Date Time", 20, 40)
+    person_id = TextAndLabel(win_lesson, "Person ID", 20, 75)
+    lesson_id = TextAndLabel(win_lesson, "Lesson ID", 20, 105)
+
+    p_table = Table(win_lesson,
+                    None,
+                    ["Date Time", "Person ID", "Lesson ID"],
+                    [100, 100, 130],
+                    20,
+                    135,
+                    person_select)
+    Button(win_lesson, text="SavePerson", width=11, command=p_save_click).place(x=20, y=365)
+    Button(win_lesson, text="EditPerson", width=11, command=p_edit_click).place(x=118, y=365)
+    Button(win_lesson, text="RemovePerson", width=12, command=p_remove_click).place(x=218, y=365)
+
+    refresh_person_side()
 
 win = Tk()
 win.title("choose leasson")
