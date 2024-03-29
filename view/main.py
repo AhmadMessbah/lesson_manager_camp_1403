@@ -199,8 +199,8 @@ def select_click():
         else:
             msg.showerror("Remove Error", message)
 
-    # Person
-    Label(win_lesson, text="Person Info", font=("Arial", 16)).place(x=20, y=10)
+    # choose
+    Label(win_lesson, text="choose lesson Info", font=("Arial", 16)).place(x=20, y=10)
     date_time = TextAndLabel(win_lesson, "Date Time", 20, 40)
     person_id = TextAndLabel(win_lesson, "Person ID", 20, 75)
     lesson_id = TextAndLabel(win_lesson, "Lesson ID", 20, 105)
