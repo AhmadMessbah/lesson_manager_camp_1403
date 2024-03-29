@@ -15,8 +15,7 @@ create table mft.lesson(
     description varchar(100)
 );
 -- table entkhab dars
-create choose_course(
-    datetime_coure date ,
-    person_id int FOREIGN KEY REFERENCES mft.person (id),
-    lesson_id int FOREIGN KEY REFERENCES mft.lesson (id))
-);
+create table  choose_course(
+    datetime_course date ,
+    person_id int );
+
