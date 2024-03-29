@@ -14,17 +14,17 @@ class PersonDa:
         self.cursor.close()
         self.connection.close()
                                  # save person by name family grade
-    def save(self,name, family):
+    def save(self,name, family,gride):
         self.connect()
-        self.cursor.execute("INSERT INTO PERSON (name, family) VALUES (%s,%s)",
+        self.cursor.execute("INSERT INTO PERSON (name, family,gride) VALUES (%s,%s,%s)",
                             [name, family])
         self.connection.commit()
         self.disconnect()
 
                                       # edit person by id name family grade
-    def edit(self,id, name, family):
+    def edit(self,id, name, family,gride):
         self.connect()
-        self.cursor.execute("UPDATE PERSON SET NAME=%s, FAMILY=%s WHERE ID=%s",
+        self.cursor.execute("UPDATE PERSON SET NAME=%s, FAMILY=%s ,gride=%s WHERE ID=%s",
                             [name,family,id])
         self.connection.commit()
         self.disconnect()
@@ -40,7 +40,7 @@ class PersonDa:
                                     # find all person by family grade
     def find_all(self):
         self.connect()
-        self.cursor.execute("SELECT * FROM PERSON ORDER BY FAMILY AND GRADE")
+        self.cursor.execute("SELECT * FROM PERSON ORDER BY FAMILY AND gride")
         person_list = self.cursor.fetchall()
         self.disconnect()
         return person_list if person_list else None
