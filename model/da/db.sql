@@ -6,3 +6,4 @@ create table mft.person(
     family varchar(30)
 );
 
+create table lesson();
