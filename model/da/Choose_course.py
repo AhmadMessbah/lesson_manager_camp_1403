@@ -14,18 +14,18 @@ class PersonDa:
         self.cursor.close()
         self.connection.close()
                                  # save person by name family grade
-    def save(self,name, family,grade):
+    def save(self,datetime, person_id,lesson_id):
         self.connect()
-        self.cursor.execute("INSERT INTO PERSON (name, family,grade) VALUES (%s,%s,%s)",
-                            [name, family,grade])
+        self.cursor.execute("INSERT INTO CHOSE_COURSE (datetime, person_id,lesson_id) VALUES (%s,%s,%s)",
+                            [datetime, person_id,lesson_id])
         self.connection.commit()
         self.disconnect()
 
                                       # edit person by id name family grade
-    def edit(self,id, name, family,grade):
+    def edit(self,datetime, person_id,lesson_id):
         self.connect()
-        self.cursor.execute("UPDATE PERSON SET NAME=%s, FAMILY=%s ,grade=%s WHERE ID=%s",
-                            [name,family,grade,id])
+        self.cursor.execute("UPDATE PERSON SET DATETIME=%s, PERSON_ID=%s ,LESSON_ID=%s WHERE ID=%s",
+                            [datetime, person_id,lesson_id])
         self.connection.commit()
         self.disconnect()
 
