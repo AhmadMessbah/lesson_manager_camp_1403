@@ -1,5 +1,6 @@
 create database mft;
 -- table mft.person
+-- salam
 create table mft.person(
     id int primary key auto_increment,
     name varchar(30),
