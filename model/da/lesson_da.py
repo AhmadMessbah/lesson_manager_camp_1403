@@ -2,7 +2,7 @@ import mysql.connector
 
 
 class LessonDa:
-    def connect(self, ):
+    def connect(self,):
         self.connection = mysql.connector.connect(
             host="localhost",
             user="root",
