@@ -6,6 +6,7 @@ create table mft.person(
     family varchar(30),
     grade varchar(30)
 );
+-- salam
 -- table lesson
 create table mft.lesson(
     id int primary key auto_increment,
